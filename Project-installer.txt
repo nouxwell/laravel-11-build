@@ -1,0 +1,32 @@
+1) Docker setup
+2) php artisan install api
+3) Hexagonal architecture setup
+4) composer require wendelladriel/laravel-validated-dto
+5) php artisan make:migration create_products_table
+6) php artisan migrate
+7) Route group
+8) php artisan make:request ProductRequest
+9) custom request
+10) dto
+11) validation
+12) php artisan make:model Product
+13) composer dump-autoload
+14) php artisan make:migration create_products_table
+15) composer require php-open-source-saver/jwt-auth
+16) php artisan vendor:publish
+17) php artisan jwt:secret
+18) language middleware
+19) payload
+20) services
+21) php artisan config:cache
+22) php artisan route:cache
+23) php artisan view:clear
+24) php artisan make:resource PostResource
+25) docker-compose build
+26) docker-compose up
+27) docker exec -it laravel_build_app bash
+28) php artisan make:data App\\Hexagon\\Domain\\DTO\\DenemeDTO
+29) php artisan make:request App\\Hexagon\\Application\\Requests\\YourCustomRequest
+30) php artisan make:rules App\\Hexagon\\Domain\\Rules\\DenemeRules
+31) php artisan make:resource App\\Hexagon\\Application\\Resources\\DenemeResources
+
