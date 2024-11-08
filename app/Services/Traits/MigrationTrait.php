@@ -10,6 +10,7 @@ trait MigrationTrait
     {
         $table->string('entry_code')->unique();
         $table->integer('sort_order')->nullable();
+        $table->boolean('soft_delete')->default(0);
         $table->timestamps();
         $table->softDeletes();
         $table->string('created_by')->nullable();

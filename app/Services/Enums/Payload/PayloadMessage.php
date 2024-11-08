@@ -21,4 +21,6 @@ enum PayloadMessage
     public const LISTED = 'messages.payload.message.listed';
     public const EMAIL_SEND_SUCCESS = 'messages.payload.message.email_send_success_message';
     public const REGISTRATION_SUCCESS = 'messages.payload.message.register_success_message';
+    public const DATA_LISTED_FOR_DATATABLE = 'messages.payload.message.data_listed_for_datatable';
+    public const DATA_LISTED_FOR_SELECT = 'messages.payload.message.data_listed_for_select';
 }

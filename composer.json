@@ -6,11 +6,14 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "endroid/qr-code": "^6.0",
         "laravel/framework": "^11.9",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "php-open-source-saver/jwt-auth": "^2.7",
+        "picqer/php-barcode-generator": "^3.2",
         "spatie/laravel-data": "^4.11",
+        "stevebauman/purify": "^6.2",
         "wendelladriel/laravel-validated-dto": "^3.8"
     },
     "require-dev": {

@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Hexagon\Domain\Repository\UserInterface;
-use App\Hexagon\Infrastructure\Repository\UserRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +11,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(UserInterface::class, UserRepository::class);
+        $repositories = config('repositories');
+        foreach ($repositories as $abstract => $concrete) {
+            if (is_array($concrete)) {
+                foreach ($concrete as $repository) {
+                    $this->app->bind($abstract, $repository);
+                }
+            } else {
+                $this->app->bind($abstract, $concrete);
+            }
+        }
     }
 
     /**

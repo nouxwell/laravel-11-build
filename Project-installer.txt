@@ -24,7 +24,7 @@
 24) php artisan make:resource PostResource
 25) docker-compose build
 26) docker-compose up
-27) docker exec -it laravel_build_app bash
+27) docker exec -it portfolio_app bash
 28) php artisan make:data App\\Hexagon\\Domain\\DTO\\DenemeDTO
 29) php artisan make:request App\\Hexagon\\Application\\Requests\\YourCustomRequest
 30) php artisan make:rules App\\Hexagon\\Domain\\Rules\\DenemeRules
