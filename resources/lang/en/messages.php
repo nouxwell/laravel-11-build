@@ -32,7 +32,10 @@ return [
             "invalid_class" => "The class :value is invalid.",
             "invalid_min_length" => "Minimum length must be at least :value characters long.",
             "invalid_max_length" => "Maximum length must be at most :value characters long.",
-            "invalid_credentials" => "Invalid credentials."
+            "invalid_credentials" => "Invalid credentials.",
+            "user_already_verified" => "User has already been verified.",
+            "email_verification_error" => "Email verification error",
+            "user_not_verified" => "User not verified!",
         ],
         "message" => [
             "created" => ":value successfully created.",
@@ -54,6 +57,21 @@ return [
             "refresh_token_success_message" => "Refresh Token successful retrieved",
             "data_listed_for_datatable" => "Data listed for datatable",
             "data_listed_for_select" => "Data listed for select",
+            "excel_exported_message" => "Excel Exported",
+            "csv_exported_message" => "Csv Exported",
+            "pdf_exported_message" => "Pdf Exported",
+            "pdf_download_link" => "PDF Download Link",
+            "excel_download_link" => "Excel Download Link",
+            "csv_download_link" => "Csv Download Link",
+            "data_exported" => "data exported",
+            "email_verified" => "Email verified successfully",
+            "email_verification" => "Email Verification",
+            "notification" => [
+                "export" => [
+                    "title" => "Export",
+                    "content" => "Data has been successfully exported"
+                ]
+            ]
         ],
         "module" => [
             "user" => "User",
@@ -184,4 +202,17 @@ return [
         "url" => ":attribute format is invalid.",
         "uuid" => ":attribute must be a valid UUID."
     ],
+
+    "template" => [
+        "mail" => [
+            "export_title" => "Export",
+            "export_content" => 'Hello :value. You can download the exported data file from above. Best regards...',
+            "verification_title" => "Verification",
+            "verification_content" => "Hello :value. You can confirm your account by clicking the link below.",
+            "verification_link_text" => "Verify your email",
+        ],
+        "email_verification_title" => "Email Verification",
+        "email_success_verification_content" => "Your account has been verified. You can log in now.",
+        "email_error_verification_content" => "You used an invalid or expired link.",
+    ]
 ];

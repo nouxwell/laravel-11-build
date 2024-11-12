@@ -29,4 +29,15 @@
 29) php artisan make:request App\\Hexagon\\Application\\Requests\\YourCustomRequest
 30) php artisan make:rules App\\Hexagon\\Domain\\Rules\\DenemeRules
 31) php artisan make:resource App\\Hexagon\\Application\\Resources\\DenemeResources
+32) php artisan make:mail PostMail
+33) php artisan cache:clear
+34) php artisan make:mail PostMail --markdown=emails.post
+35) php artisan make:job SendBulkEmailJob
+36) php artisan queue:work
+37) composer require laravel/horizon
+38) php artisan horizon:install
+39) php artisan migrate
+40) php artisan queue:work redis
+41) php artisan queue:work database
+42) docker exec -it laravel_build_app bash
 

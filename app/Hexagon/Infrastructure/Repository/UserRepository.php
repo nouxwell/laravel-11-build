@@ -6,8 +6,12 @@ use App\Hexagon\Domain\DTO\Request\Auth\RegisterRequestDto;
 use App\Hexagon\Domain\DTO\Request\Datatable\DatatableRequestDto;
 use App\Hexagon\Domain\DTO\Request\Select\SelectRequestDto;
 use App\Hexagon\Domain\DTO\Request\User\DatatableFilterRequestDto;
+use App\Hexagon\Domain\Exceptions\NotFoundException;
 use App\Hexagon\Domain\Repository\UserInterface;
 use App\Models\User;
+use App\Services\Enums\Payload\PayloadExceptionMessage;
+use App\Services\Enums\Payload\PayloadMessage;
+use App\Services\Enums\Payload\PayloadModule;
 use App\Services\Traits\CodeGeneratorTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
@@ -32,12 +36,13 @@ class UserRepository extends BaseRepository implements UserInterface
     /**
      * @throws \Exception
      */
-    public function register(RegisterRequestDto $dto): void
+    public function register(RegisterRequestDto $dto): int
     {
         $dto->entry_code = $this->generateEntryCode('User');
         $dto->sort_order = $this->generateSort();
         $dto->password = bcrypt($dto->password);
-        $this->getModel()::create($dto->toArray());
+        $user = $this->getModel()::create($dto->toArray());
+        return $user->getKey();
     }
 
 
@@ -179,6 +184,39 @@ class UserRepository extends BaseRepository implements UserInterface
             'recordsTotal' => $paginator->total(),
             'recordsFiltered' => $paginator->total(),
         ];
+    }
+
+    /**
+     * @throws NotFoundException
+     */
+    public function find(int|string $id): ?User
+    {
+        $user = User::find($id);
+        if (!$user)
+            throw new NotFoundException(PayloadModule::USER);
+
+        return $user;
+    }
+
+
+    /**
+     * @throws NotFoundException
+     */
+    public function verify(int|string $id): array
+    {
+        $result = [];
+        $result['status'] = true;
+        $result['message'] = __(PayloadMessage::EMAIL_VERIFIED);
+
+        $user = $this->find($id);
+
+        if ($user->hasVerifiedEmail()) {
+            $result['status'] = false;
+            $result['message'] = __(PayloadExceptionMessage::USER_ALREADY_VERIFIED);
+        }
+
+        $user->markEmailAsVerified();
+        return $result;
     }
 
 

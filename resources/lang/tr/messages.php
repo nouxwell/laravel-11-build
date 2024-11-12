@@ -33,6 +33,9 @@ return [
             "invalid_min_length" => "Minimum uzunluk :value karakter olmalıdır.",
             "invalid_max_length" => "Maksimum uzunluk :value karakter olmalıdır.",
             "invalid_credentials" => "Geçersiz kimlik bilgileri.",
+            "user_already_verified" => "Kullanıcı zaten doğrulandı.",
+            "email_verification_error" => "E-posta doğrulama hatası",
+            "user_not_verified" => "Kullanıcı doğrulanmadı!",
         ],
         "message" => [
             "created" => ":value başarıyla oluşturuldu.",
@@ -53,7 +56,22 @@ return [
             "profile_fetched_message" => "Profil bilgileri başarıyla alındı",
             "refresh_token_success_message" => "Yenileme Jetonu başarıyla alındı",
             "data_listed_for_datatable" => "Veri tablosu için listelenen veriler",
-            "data_listed_for_select" => "Seçim için listelen veriler"
+            "data_listed_for_select" => "Seçim için listelen veriler",
+            "excel_exported_message" => "Excel Dışa Aktarma",
+            "csv_exported_message" => "Csv Dışa Aktarma",
+            "pdf_exported_message" => "Pdf Dışa Aktarma",
+            "pdf_download_link" => "PDF İndirme Bağlantısı",
+            "excel_download_link" => "Excel İndirme Bağlantısı",
+            "csv_download_link" => "Csv İndirme Bağlantısı",
+            "data_exported" => "Veriler dışa aktarıldı",
+            "email_verified" => "E-posta başarıyla doğrulandı",
+            "email_verification" => "E-posta Doğrulama",
+            "notification" => [
+                "export" => [
+                    "title" => "Dışa Aktarma",
+                    "content" => "Veriler başarıyla dışa aktarıldı"
+                ]
+            ]
         ],
         "module" => [
             "user" => "Kullanıcı",
@@ -184,4 +202,17 @@ return [
         "url" => ":attribute formatı geçersizdir.",
         "uuid" => ":attribute geçerli bir UUID olmalıdır."
     ],
+
+    "template" => [
+        "mail" => [
+            "export_title" => 'Dışa Aktarma',
+            "export_content" => 'Merhaba :value. Dışa aktarılan verilerin dosyasını yukarıdan indirebilirsin. Sevgilerle...',
+            "verification_title" => "Doğrulama",
+            "verification_content" => "Merhaba :value. Aşağıdaki linke tıklayarak hesabınızı onaylayabilirsiniz.",
+            "verification_link_text" => "E-postanızı doğrulayın",
+        ],
+        "email_verification_title" => "E-posta Doğrulama",
+        "email_success_verification_content" => "Hesabınız doğrulandı. Şimdi giriş yapabilirsiniz.",
+        "email_error_verification_content" => "Geçersiz ya da süresi dolmuş bir bağlantı kullandınız.",
+    ]
 ];

@@ -23,4 +23,15 @@ enum PayloadMessage
     public const REGISTRATION_SUCCESS = 'messages.payload.message.register_success_message';
     public const DATA_LISTED_FOR_DATATABLE = 'messages.payload.message.data_listed_for_datatable';
     public const DATA_LISTED_FOR_SELECT = 'messages.payload.message.data_listed_for_select';
+    public const EXCEL_EXPORTED_MESSAGE = 'messages.payload.message.excel_exported_message';
+    public const CSV_EXPORTED_MESSAGE = 'messages.payload.message.csv_exported_message';
+    public const PDF_EXPORTED_MESSAGE = 'messages.payload.message.pdf_exported_message';
+    public const EXCEL_DOWNLOAD_LINK_MESSAGE = 'messages.payload.message.excel_download_link';
+    public const CSV_DOWNLOAD_LINK_MESSAGE = 'messages.payload.message.csv_download_link';
+    public const PDF_DOWNLOAD_LINK_MESSAGE = 'messages.payload.message.pdf_download_link';
+    public const NOTIFICATION_EXPORT_TITLE = 'messages.payload.message.notification.export.title';
+    public const NOTIFICATION_EXPORT_CONTENT = 'messages.payload.message.notification.export.content';
+    public const DATA_EXPORTED = 'messages.payload.message.data_exported';
+    public const EMAIL_VERIFIED = 'messages.payload.message.email_verified';
+    public const EMAIL_VERIFICATION = 'messages.payload.message.email_verification';
 }

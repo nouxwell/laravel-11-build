@@ -33,4 +33,7 @@ enum PayloadExceptionMessage
     public const UNAUTHORIZED_ERROR = 'messages.payload.exception.unauthorized_error';
     public const INVALID_CLASS = 'messages.payload.exception.invalid_class';
     public const INVALID_CREDENTIALS = 'messages.payload.exception.invalid_credentials';
+    public const USER_ALREADY_VERIFIED = 'messages.payload.exception.user_already_verified';
+    public const EMAIL_VERIFICATION_ERROR = 'messages.payload.exception.email_verification_error';
+    public const USER_NOT_VERIFIED = 'messages.payload.exception.user_not_verified';
 }
