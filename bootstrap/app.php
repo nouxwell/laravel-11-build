@@ -2,6 +2,7 @@
 
 use App\Hexagon\Domain\Exceptions\CustomException;
 use App\Http\Middleware\Localization;
+//use App\Http\Middleware\TwoFactorAuthentication;
 use App\Services\Enums\Payload\PayloadExceptionMessage;
 use App\Services\Utils\Payload\PayloadFactory;
 use Illuminate\Auth\AuthenticationException;
@@ -30,6 +31,7 @@ return Application::configure(basePath: dirname(__DIR__))
 //            \Illuminate\Foundation\Http\Middleware\TrimStrings::class,
 //            \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
             Localization::class,
+//            TwoFactorAuthentication::class
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

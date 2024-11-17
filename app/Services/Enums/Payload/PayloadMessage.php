@@ -34,4 +34,9 @@ enum PayloadMessage
     public const DATA_EXPORTED = 'messages.payload.message.data_exported';
     public const EMAIL_VERIFIED = 'messages.payload.message.email_verified';
     public const EMAIL_VERIFICATION = 'messages.payload.message.email_verification';
+    public const ENABLE_TWO_FACTOR = 'messages.payload.message.enable_two_factor';
+    public const DISABLE_TWO_FACTOR = 'messages.payload.message.disable_two_factor';
+    public const RESET_TWO_FACTOR = 'messages.payload.message.reset_two_factor';
+    public const GENERATE_QR_CODE = 'messages.payload.message.generate_qr_code';
+    public const LOGIN_CHECK = 'messages.payload.message.login_check';
 }

@@ -40,4 +40,5 @@
 40) php artisan queue:work redis
 41) php artisan queue:work database
 42) docker exec -it laravel_build_app bash
-
+43) composer require pragmarx/google2fa
+44) composer require bacon/bacon-qr-code

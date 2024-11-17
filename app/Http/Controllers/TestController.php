@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-
-use Endroid\QrCode\Builder\Builder;
-use Endroid\QrCode\Encoding\Encoding;
-use Endroid\QrCode\ErrorCorrectionLevel;
-use Endroid\QrCode\Label\LabelAlignment;
-use Endroid\QrCode\Label\Font\OpenSans;
-use Endroid\QrCode\RoundBlockSizeMode;
-use Endroid\QrCode\Writer\PngWriter;
+use BaconQrCode\Writer;
+use BaconQrCode\Renderer\ImageRenderer;
+use BaconQrCode\Renderer\Image\SvgImageBackEnd;
+use BaconQrCode\Renderer\RendererStyle\RendererStyle;
 
 class TestController extends Controller
 {
@@ -17,32 +13,39 @@ class TestController extends Controller
 
 
     public function __invoke() {
-        $text = 'https://example.com';
-
-        $builder = new Builder(
-            writer: new PngWriter(),
-            writerOptions: [],
-            validateResult: false,
-            data: 'Custom QR code contents',
-            encoding: new Encoding('UTF-8'),
-            errorCorrectionLevel: ErrorCorrectionLevel::High,
-            size: 300,
-            margin: 10,
-            roundBlockSizeMode: RoundBlockSizeMode::Margin,
-            labelText: 'This is the label',
-            labelFont: new OpenSans(20),
-            labelAlignment: LabelAlignment::Center,
-            logoPath: __DIR__.'/assets/symfony.png',
-            logoResizeToWidth: 50,
-            logoPunchoutBackground: true
+        // QR kod ayarları
+        $renderer = new ImageRenderer(
+            new RendererStyle(400), // Boyut (400x400 piksel)
+            new SvgImageBackEnd()  // SVG formatında çıktı
         );
 
-        $result = $builder->build();
+        $writer = new Writer($renderer);
 
-// Return the QR code image as a response
-        return response($result, 200)
-            ->header('Content-Type', $result->getMimeType());
-//        $code = "123456789";
-//        return response()->json(BarcodeGenerator::generate($code));
+        // QR kod içeriği
+        $text = 'https://example.com';
+
+        // QR kodu oluştur ve SVG olarak döndür
+        $qrCodeSvg = $writer->writeString($text);
+
+        // Tarayıcıda göstermek için SVG içeriğini döndür
+        return response($qrCodeSvg, 200, ['Content-Type' => 'image/svg+xml']);
+
+        //İndirmek için
+//        $renderer = new ImageRenderer(
+//            new RendererStyle(400),
+//            new SvgImageBackEnd()
+//        );
+//
+//        $writer = new Writer($renderer);
+//
+//        $text = 'https://example.com';
+//
+//        $qrCodeSvg = $writer->writeString($text);
+//
+//        $fileName = 'qrcode.svg';
+//        return response($qrCodeSvg, 200, [
+//            'Content-Type' => 'image/svg+xml',
+//            'Content-Disposition' => "attachment; filename=\"$fileName\""
+//        ]);
     }
 }

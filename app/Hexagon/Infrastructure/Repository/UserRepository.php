@@ -2,11 +2,16 @@
 
 namespace App\Hexagon\Infrastructure\Repository;
 
+use App\Hexagon\Domain\DTO\Request\Auth\LoginRequestDto;
 use App\Hexagon\Domain\DTO\Request\Auth\RegisterRequestDto;
 use App\Hexagon\Domain\DTO\Request\Datatable\DatatableRequestDto;
 use App\Hexagon\Domain\DTO\Request\Select\SelectRequestDto;
 use App\Hexagon\Domain\DTO\Request\User\DatatableFilterRequestDto;
+use App\Hexagon\Domain\Exceptions\InvalidCredentialsException;
+use App\Hexagon\Domain\Exceptions\InvalidVerificationCodeException;
 use App\Hexagon\Domain\Exceptions\NotFoundException;
+use App\Hexagon\Domain\Exceptions\TwoFactorAlreadyActiveException;
+use App\Hexagon\Domain\Exceptions\TwoFactorInactiveException;
 use App\Hexagon\Domain\Repository\UserInterface;
 use App\Models\User;
 use App\Services\Enums\Payload\PayloadExceptionMessage;
@@ -16,6 +21,11 @@ use App\Services\Traits\CodeGeneratorTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
+use PragmaRX\Google2FA\Exceptions\IncompatibleWithGoogleAuthenticatorException;
+use PragmaRX\Google2FA\Exceptions\InvalidCharactersException;
+use PragmaRX\Google2FA\Exceptions\SecretKeyTooShortException;
+use PragmaRX\Google2FA\Google2FA;
 
 class UserRepository extends BaseRepository implements UserInterface
 {
@@ -41,7 +51,10 @@ class UserRepository extends BaseRepository implements UserInterface
         $dto->entry_code = $this->generateEntryCode('User');
         $dto->sort_order = $this->generateSort();
         $dto->password = bcrypt($dto->password);
-        $user = $this->getModel()::create($dto->toArray());
+        $user = $this->getModel()::create(array_merge(
+            $dto->toArray(),
+            ['two_factor_enabled' => 1]
+        ));
         return $user->getKey();
     }
 
@@ -219,5 +232,63 @@ class UserRepository extends BaseRepository implements UserInterface
         return $result;
     }
 
+    /**
+     * @throws IncompatibleWithGoogleAuthenticatorException
+     * @throws SecretKeyTooShortException
+     * @throws InvalidCharactersException
+     * @throws TwoFactorAlreadyActiveException
+     */
+    public function enableTwoFactor(): void
+    {
+        $user = Auth::user();
+        $user->two_factor_secret = null;
+        $user->two_factor_enabled = true;
+        $user->save();
+    }
+
+
+    public function disableTwoFactor(): void
+    {
+        $user = Auth::user();
+        $user->two_factor_enabled = false;
+        $user->two_factor_secret = null;
+        $user->save();
+    }
+
+    public function resetTwoFactor(): void
+    {
+        $user = Auth::user();
+        $user->two_factor_secret = null;
+        $user->save();
+    }
+
+    /**
+     * @throws IncompatibleWithGoogleAuthenticatorException
+     * @throws SecretKeyTooShortException
+     * @throws InvalidCharactersException
+     * @throws TwoFactorInactiveException
+     * @throws InvalidVerificationCodeException
+     * @throws InvalidCredentialsException
+     */
+    public function verifyTwoFactor(LoginRequestDto $dto)
+    {
+        if (!auth()->attempt(['email' => $dto->email, 'password' => $dto->password])) {
+            throw new InvalidCredentialsException();
+        }
+
+        $user = Auth::user();
+
+        if (!$user->two_factor_enabled) {
+            throw new TwoFactorInactiveException();
+        }
+
+        // Gelen 2FA kodunu doğrula
+        $google2fa = new Google2FA();
+
+        if (!$google2fa->verifyKey($user->two_factor_secret, $dto->verificationCode)) {
+            throw new InvalidVerificationCodeException();
+        }
+
+    }
 
 }

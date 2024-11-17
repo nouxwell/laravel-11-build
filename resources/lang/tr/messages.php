@@ -36,6 +36,9 @@ return [
             "user_already_verified" => "Kullanıcı zaten doğrulandı.",
             "email_verification_error" => "E-posta doğrulama hatası",
             "user_not_verified" => "Kullanıcı doğrulanmadı!",
+            "two_factors_is_already_active" => "İkili doğrulama sistemi zaten aktif!",
+            "two_factors_is_inactive" => "İkili doğrulama sistemi aktif değil!",
+            "invalid_verification_code" => "Geçersiz Doğrulama Kodu!",
         ],
         "message" => [
             "created" => ":value başarıyla oluşturuldu.",
@@ -66,6 +69,11 @@ return [
             "data_exported" => "Veriler dışa aktarıldı",
             "email_verified" => "E-posta başarıyla doğrulandı",
             "email_verification" => "E-posta Doğrulama",
+            "disable_two_factor" => "İkili doğrulama sistemi devre dışı bırakıldı",
+            "enable_two_factor" => "İkili doğrulama sistemi etkinleştirildi",
+            "reset_two_factor" => "İkili doğrulama sistemini sıfırla",
+            "generate_qr_code" => "QR kodu oluşturuldu.",
+            "login_check" => "Giriş bilgileri kontrol ediliyor.",
             "notification" => [
                 "export" => [
                     "title" => "Dışa Aktarma",
@@ -100,6 +108,7 @@ return [
             'exportOption.type' => 'Dışa Aktarım Türü',
             'exportOption.columns' => 'Dışa Aktarım Sütunları',
             'exportOption.fileName' => 'Dışa Aktarım Dosya Adı',
+            'verificationCode' => 'Doğrulama Kodu'
         ],
         "accepted" => ":attribute kabul edilmelidir.",
         "active_url" => ":attribute geçerli bir URL değildir.",
@@ -112,7 +121,7 @@ return [
         "before" => ":attribute :date tarihinden önceki bir tarih olmalıdır.",
         "before_or_equal" => ":attribute :date tarihinden önceki veya eşit olan bir tarih olmalıdır.",
         "between" => [
-        "numeric" => ":attribute :min ile :max arasında olmalıdır.",
+            "numeric" => ":attribute :min ile :max arasında olmalıdır.",
             "file" => ":attribute :min ile :max kilobayt arasında olmalıdır.",
             "string" => ":attribute :min ile :max karakter arasında olmalıdır.",
             "array" => ":attribute :min ile :max arasında öğeye sahip olmalıdır."
@@ -131,13 +140,13 @@ return [
         "file" => ":attribute bir dosya olmalıdır.",
         "filled" => ":attribute alanı doldurulmuş olmalıdır.",
         "gt" => [
-        "numeric" => ":attribute :value'dan büyük olmalıdır.",
+            "numeric" => ":attribute :value'dan büyük olmalıdır.",
             "file" => ":attribute :value kilobayttan büyük olmalıdır.",
             "string" => ":attribute :value karakterden büyük olmalıdır.",
             "array" => ":attribute :value öğeden fazla olmalıdır."
         ],
         "gte" => [
-        "numeric" => ":attribute :value'a eşit veya büyük olmalıdır.",
+            "numeric" => ":attribute :value'a eşit veya büyük olmalıdır.",
             "file" => ":attribute :value kilobayttan büyük veya eşit olmalıdır.",
             "string" => ":attribute :value karakterden büyük veya eşit olmalıdır.",
             "array" => ":attribute en az :value öğe içermelidir."
@@ -151,13 +160,13 @@ return [
         "ipv6" => ":attribute geçerli bir IPv6 adresi olmalıdır.",
         "json" => ":attribute geçerli bir JSON dizgesi olmalıdır.",
         "lt" => [
-        "numeric" => ":attribute :value'dan küçük olmalıdır.",
+            "numeric" => ":attribute :value'dan küçük olmalıdır.",
             "file" => ":attribute :value kilobayttan küçük olmalıdır.",
             "string" => ":attribute :value karakterden küçük olmalıdır.",
             "array" => ":attribute :value öğeden az olmalıdır."
         ],
         "lte" => [
-        "numeric" => ":attribute :value'a eşit veya küçük olmalıdır.",
+            "numeric" => ":attribute :value'a eşit veya küçük olmalıdır.",
             "file" => ":attribute :value kilobayttan küçük veya eşit olmalıdır.",
             "string" => ":attribute :value karakterden küçük veya eşit olmalıdır.",
             "array" => ":attribute en fazla :value öğe içermelidir."
@@ -190,7 +199,7 @@ return [
         "required_without_all" => ":values'in hiçbiri mevcut olmadığında :attribute gereklidir.",
         "same" => ":attribute ve :other eşleşmelidir.",
         "size" => [
-        "numeric" => ":attribute :size olmalıdır.",
+            "numeric" => ":attribute :size olmalıdır.",
             "file" => ":attribute :size kilobyte olmalıdır.",
             "string" => ":attribute :size karakter olmalıdır.",
             "array" => ":attribute :size öğe içermelidir."

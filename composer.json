@@ -6,14 +6,15 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "bacon/bacon-qr-code": "^3.0",
         "dompdf/dompdf": "^3.0",
-        "endroid/qr-code": "^6.0",
         "laravel/framework": "^11.9",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "php-open-source-saver/jwt-auth": "^2.7",
         "phpoffice/phpspreadsheet": "^3.4",
         "picqer/php-barcode-generator": "^3.2",
+        "pragmarx/google2fa": "^8.0",
         "spatie/laravel-data": "^4.11",
         "stevebauman/purify": "^6.2",
         "wendelladriel/laravel-validated-dto": "^3.8"

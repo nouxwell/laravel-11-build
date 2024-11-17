@@ -2,10 +2,10 @@
 
 namespace App\Hexagon\Infrastructure\Persistence\Auth;
 
-use App\Hexagon\Domain\DTO\Request\Auth\RegisterRequestDto;
+use App\Hexagon\Domain\DTO\Request\Auth\LoginRequestDto;
 use App\Hexagon\Domain\Repository\UserInterface;
 
-class RegisterHandler
+class VerifyTwoFactorHandler
 {
     private UserInterface $user;
     public function __construct(UserInterface $user)
@@ -13,8 +13,8 @@ class RegisterHandler
         $this->user = $user;
     }
 
-    public function handle(RegisterRequestDto $dto): int
+    public function handle(LoginRequestDto $dto): void
     {
-        return $this->user->register($dto);
+        $this->user->verifyTwoFactor($dto);
     }
 }

@@ -36,6 +36,9 @@ return [
             "user_already_verified" => "User has already been verified.",
             "email_verification_error" => "Email verification error",
             "user_not_verified" => "User not verified!",
+            "two_factors_is_already_active" => "Two factor is already active!",
+            "two_factors_is_inactive" => "Two factor is inactive!",
+            "invalid_verification_code" => "Invalid Verification Code!",
         ],
         "message" => [
             "created" => ":value successfully created.",
@@ -66,6 +69,11 @@ return [
             "data_exported" => "data exported",
             "email_verified" => "Email verified successfully",
             "email_verification" => "Email Verification",
+            "disable_two_factor" => "Disable Two Factor",
+            "enable_two_factor" => "Enable Two Factor",
+            "reset_two_factor" => "Reset Two Factor",
+            "generate_qr_code" => "QR code was generated.",
+            "login_check" => "Login information is being checked.",
             "notification" => [
                 "export" => [
                     "title" => "Export",
@@ -100,6 +108,7 @@ return [
             'exportOption.type' => 'Export Option Type',
             'exportOption.columns' => 'Export Option Columns',
             'exportOption.fileName' => 'Export Option File Name',
+            'verificationCode' => 'verification Code',
         ],
         "accepted" => ":attribute must be accepted.",
         "active_url" => ":attribute is not a valid URL.",
@@ -112,7 +121,7 @@ return [
         "before" => ":attribute must be a date before :date.",
         "before_or_equal" => ":attribute must be a date before or equal to :date.",
         "between" => [
-        "numeric" => ":attribute must be between :min and :max.",
+            "numeric" => ":attribute must be between :min and :max.",
             "file" => ":attribute must be between :min and :max kilobytes.",
             "string" => ":attribute must be between :min and :max characters.",
             "array" => ":attribute must have between :min and :max items."
@@ -131,13 +140,13 @@ return [
         "file" => ":attribute must be a file.",
         "filled" => ":attribute field must be filled.",
         "gt" => [
-        "numeric" => ":attribute must be greater than :value.",
+            "numeric" => ":attribute must be greater than :value.",
             "file" => ":attribute must be greater than :value kilobytes.",
             "string" => ":attribute must be greater than :value characters.",
             "array" => ":attribute must have more than :value items."
         ],
         "gte" => [
-        "numeric" => ":attribute must be greater than or equal to :value.",
+            "numeric" => ":attribute must be greater than or equal to :value.",
             "file" => ":attribute must be greater than or equal to :value kilobytes.",
             "string" => ":attribute must be greater than or equal to :value characters.",
             "array" => ":attribute must have :value items or more."
@@ -151,13 +160,13 @@ return [
         "ipv6" => ":attribute must be a valid IPv6 address.",
         "json" => ":attribute must be a valid JSON string.",
         "lt" => [
-        "numeric" => ":attribute must be less than :value.",
+            "numeric" => ":attribute must be less than :value.",
             "file" => ":attribute must be less than :value kilobytes.",
             "string" => ":attribute must be less than :value characters.",
             "array" => ":attribute must have less than :value items."
         ],
         "lte" => [
-        "numeric" => ":attribute must be less than or equal to :value.",
+            "numeric" => ":attribute must be less than or equal to :value.",
             "file" => ":attribute must be less than or equal to :value kilobytes.",
             "string" => ":attribute must be less than or equal to :value characters.",
             "array" => ":attribute must not have more than :value items."
@@ -190,7 +199,7 @@ return [
         "required_without_all" => ":attribute is required when none of :values are present.",
         "same" => ":attribute and :other must match.",
         "size" => [
-        "numeric" => ":attribute must be :size.",
+            "numeric" => ":attribute must be :size.",
             "file" => ":attribute must be :size kilobytes.",
             "string" => ":attribute must be :size characters.",
             "array" => ":attribute must contain :size items."

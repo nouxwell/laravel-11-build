@@ -27,7 +27,7 @@ class LoginHandler
      */
     public function handle(LoginRequestDto $dto): BaseDto
     {
-        if (! $token = auth()->attempt($dto->all()))
+        if (! $token = auth()->attempt(['email' => $dto->email, 'password' => $dto->password]))
             throw new InvalidCredentialsException();
 
         if (!auth()->user()->hasVerifiedEmail())

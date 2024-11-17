@@ -36,4 +36,7 @@ enum PayloadExceptionMessage
     public const USER_ALREADY_VERIFIED = 'messages.payload.exception.user_already_verified';
     public const EMAIL_VERIFICATION_ERROR = 'messages.payload.exception.email_verification_error';
     public const USER_NOT_VERIFIED = 'messages.payload.exception.user_not_verified';
+    public const TWO_FACTOR_IS_ALREADY_ACTIVE = 'messages.payload.exception.two_factors_is_already_active';
+    public const TWO_FACTOR_IS_INACTIVE = 'messages.payload.exception.two_factors_is_inactive';
+    public const INVALID_VERIFICATION_CODE = 'messages.payload.exception.invalid_verification_code';
 }

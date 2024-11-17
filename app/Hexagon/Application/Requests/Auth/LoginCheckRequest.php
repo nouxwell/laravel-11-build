@@ -3,7 +3,7 @@
 namespace App\Hexagon\Application\Requests\Auth;
 
 use App\Hexagon\Domain\DTO\BaseDto;
-use App\Hexagon\Domain\DTO\Request\Auth\LoginRequestDto;
+use App\Hexagon\Domain\DTO\Request\Auth\LoginCheckRequestDto;
 use App\Hexagon\Domain\Exceptions\InvalidClassException;
 use App\Services\Traits\TransformerTrait;
 use Illuminate\Contracts\Validation\ValidationRule;
@@ -11,7 +11,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\ValidationException;
 
-class LoginRequest extends FormRequest
+class LoginCheckRequest extends FormRequest
 {
     use TransformerTrait;
 
@@ -33,7 +33,6 @@ class LoginRequest extends FormRequest
         return [
             'email' => 'required|string|email|max:255',
             'password' => 'required|string|min:6|max:255',
-            'verificationCode' => 'nullable|string|size:6',
         ];
     }
 
@@ -58,12 +57,6 @@ class LoginRequest extends FormRequest
                 'attribute' => __('messages.validation.attributes.password'),
                 'max' => 255
             ]),
-
-            'verificationCode.string' => __('messages.validation.string', ['attribute' => __('messages.validation.attributes.verificationCode')]),
-            'verificationCode.size' => __('messages.validation.size.string', [
-                'attribute' => __('messages.validation.attributes.verificationCode'),
-                'size' => 6
-            ]),
         ];
     }
 
@@ -82,6 +75,6 @@ class LoginRequest extends FormRequest
      */
     public function buildDto(): BaseDto
     {
-        return $this->transformToDTO(LoginRequestDto::class, $this->validated());
+        return $this->transformToDTO(LoginCheckRequestDto::class, $this->validated());
     }
 }
